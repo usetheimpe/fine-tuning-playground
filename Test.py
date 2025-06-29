@@ -6,6 +6,7 @@ from transformers import GPT2Tokenizer
 from transformers import GPT2ForSequenceClassification
 from transformers import TrainingArguments, Trainer
 
+print("🔥 TrainingArguments from:", TrainingArguments.__module__)
 
 # 트위터 데이터 셋을 불러온다
 dataset = load_dataset("mteb/tweet_sentiment_extraction")
