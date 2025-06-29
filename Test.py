@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import evaluate
 from datasets import load_dataset
 from transformers import GPT2Tokenizer
@@ -28,7 +29,7 @@ small_train_dataset = tokenized_datasets["train"].shuffle(seed=42).select(range(
 small_test_dataset = tokenized_datasets["test"].shuffle(seed=42).select(range(1000))
 
 # GPT2를 3 종류의 라벨로 분류하는 모델을 만든다
-model = GPT2ForSequenceClassification.from_pretrained("gpt2", num_lables=3)
+model = GPT2ForSequenceClassification.from_pretrained("gpt2", num_labels=3)
 
 # 평가 메트릭을 불러온다
 metric = evaluate.load("hyperml/balanced_accuracy")
