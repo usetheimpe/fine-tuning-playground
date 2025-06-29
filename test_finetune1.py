@@ -65,4 +65,17 @@ trainer = Trainer(
 )
 
 trainer.train()
-trainer.evaluate()
+results = trainer.evaluate()
+print(results)
+
+predictions = trainer.predict(small_test_dataset)
+preds = np.argmax(predictions.predictions, axis=-1)
+
+for i in range(5):
+    print(f"📝 Text: {dataset['test'][i]['text']}")
+    print(f"✅ Ground Truth: {dataset['test'][i]['label']}")
+    print(f"🤖 Predicted: {preds[i]}")
+    print("———")
+
+trainer.save_model("finetuned-gpt2-classifier")
+tokenizer.save_pretrained("finetuned-gpt2-classifier")
