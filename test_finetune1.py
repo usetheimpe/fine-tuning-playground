@@ -6,8 +6,6 @@ from transformers import GPT2Tokenizer
 from transformers import GPT2ForSequenceClassification
 from transformers import TrainingArguments, Trainer
 
-print("🔥 TrainingArguments from:", TrainingArguments.__module__)
-
 # 트위터 데이터 셋을 불러온다
 dataset = load_dataset("mteb/tweet_sentiment_extraction")
 
@@ -44,11 +42,17 @@ def compute_metrics(eval_pred):
 # 트레이닝에 필요한 설정을 정의한다
 # TrainingArguments 클래스를 사용하여 객체를 생성한다
 training_args = TrainingArguments(
-    output_dir="test_trainer", # 모델을 저장할 공간 
-    evaluation_strategy="epoch", # 전체 데이터 셋을 돌리고 평가하는 전략을 택한다
-    per_device_train_batch_size=1, # Reduce batch size here
-    per_device_eval_batch_size=1, # Optionally, reduce for evaluation as well
-    gradient_accumulation_steps=4 # 4 문장 마다 가중치를 업데이트 합니다 
+    output_dir="test_trainer",
+    do_train=True,
+    do_eval=True,
+    eval_steps=500,  # 500 step마다 평가
+    per_device_train_batch_size=1,
+    per_device_eval_batch_size=1,
+    gradient_accumulation_steps=4,
+    logging_steps=10,
+    save_steps=500,
+    num_train_epochs=1,
+    overwrite_output_dir=True
 )
 
 # 트레이닝 하는 클레스를 이용해서 객체를 생성한다
