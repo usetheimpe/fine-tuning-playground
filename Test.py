@@ -1,6 +1,5 @@
 import pandas as pd
 import evaluate
-import evaluate
 from datasets import load_dataset
 from transformers import GPT2Tokenizer
 from transformers import GPT2ForSequenceClassification
@@ -55,7 +54,7 @@ trainer = Trainer(
     model=model, # 3 종류의 라벨로 분류하는 모델을 만든다
     args=training_args, # 트레이닝에 필요한 설정 Arguments를 이용해서 객체를 생성한다
     train_dataset=small_train_dataset, # 
-    eval_dataset=small_eval_dataset,
+    eval_dataset=small_test_dataset,
     compute_metrics=compute_metrics
 )
 
