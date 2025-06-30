@@ -2,7 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from langchain_community.tools import DuckDuckGoSearchResults
 from langchain.agents import AgentType, initialize_agent, Tool
-from langchain.chains import LLMMatchChain
+from langchain.chains import LLMMathChain
  
 api_key_system = os.getenv("GOOGLE_API_KEY")
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", api_key=api_key_system)
