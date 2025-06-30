@@ -32,7 +32,7 @@ print("The output for the prompt is:")
 print(agent_output.get('output')) 
 
 # multiple_tools 
-math_chain = LLMMatchChain.from_llm(llm=llm)
+math_chain = LLMMathChain.from_llm(llm=llm)
 math_tool = Tool.from_function(name="Calculator",
                                func=math_chain.run,
                                description="Use this tool for matchmatical operations and nothing else. Only input math expression")
