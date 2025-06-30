@@ -1,2 +1,2 @@
 # fine-tuning-playground
-playground to test & explore agent & gen AI APIs
+Playground to test & explore agent & gen AI APIs
