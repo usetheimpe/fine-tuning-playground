@@ -44,14 +44,14 @@ agent_with_two_tools = initialize_agent(
     verbose=True
 )
 
-prompt="""Which government department is Elon Musk heading currently? How much cost does he aim to save for the USA government as an absolute number and as a percentage of the total GDP of the USA?""" 
+prompt="Which government department is Elon Musk heading currently? How much cost does he aim to save for the USA government as an absolute number and as a percentage of the total GDP of the USA?" 
 
 print("The prompt is:", prompt)
 agent_output = agent_with_two_tools.invoke(prompt)
 print("The output for the prompt is:") 
 print(agent_output.get('output')) 
 
-prompt="""Which government department is Elon Musk heading currently? Add 11117 to how much cost he aims to save for the USA government and give the number.""" 
+prompt="Which government department is Elon Musk heading currently? Add 11117 to how much cost he aims to save for the USA government and give the number." 
 print("The prompt is:",prompt) 
 agent_output= agent_with_two_tools.invoke(prompt) 
 print("The output for the prompt is:") 
