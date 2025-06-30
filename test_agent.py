@@ -21,14 +21,15 @@ agent = initialize_agent(
     llm=llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True,
-    handle_parsing_errors=True
+    handle_parsing_errors=True,
+    max_iterations=5
 )
 
 prompt="Which government department is Elon Musk heading currently?" 
 print("The prompt is:",prompt) 
  
 # Get output 
-agent_output= agent.invoke(prompt) 
+agent_output= agent.invoke(prompt, config={"early_stopping_method": "generate"}) 
 print("The output for the prompt is:") 
 print(agent_output.get('output')) 
 
@@ -43,13 +44,14 @@ agent_with_two_tools = initialize_agent(
     llm=llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True,
-    handle_parsing_errors=True
+    handle_parsing_errors=True,
+    max_iterations=5
 )
 
 prompt="Which government department is Elon Musk heading currently? How much cost does he aim to save for the USA government as an absolute number and as a percentage of the total GDP of the USA?" 
 
 print("The prompt is:", prompt)
-agent_output = agent_with_two_tools.invoke(prompt)
+agent_output = agent_with_two_tools.invoke(prompt, config={"early_stopping_method": "generate"})
 print("The output for the prompt is:") 
 print(agent_output.get('output')) 
 
