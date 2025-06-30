@@ -6,7 +6,7 @@ from langchain.chains import LLMMathChain
  
 api_key_system = os.getenv("GOOGLE_API_KEY")
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", api_key=api_key_system)
-prompt="Which government department is Elon Must Heading currently?"
+prompt="Which government department is Elon Musk heading currently?"
 print ("The prompt is:", prompt)
 llm_output=llm.invoke(prompt)
 print("the output for the prompt is:")
@@ -20,7 +20,8 @@ agent = initialize_agent(
     tools=[ddg_search],
     llm=llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    verbose=True
+    verbose=True,
+    handle_parsing_errors=True
 )
 
 prompt="Which government department is Elon Musk heading currently?" 
@@ -41,7 +42,8 @@ agent_with_two_tools = initialize_agent(
     tools=[ddg_search, math_tool],
     llm=llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    verbose=True
+    verbose=True,
+    handle_parsing_errors=True
 )
 
 prompt="Which government department is Elon Musk heading currently? How much cost does he aim to save for the USA government as an absolute number and as a percentage of the total GDP of the USA?" 
